@@ -1,9 +1,10 @@
 import pygame
-from snake import Snake
-from food import Food
-from spritesheet import SpriteSheet
-from common import Directions
+
 import colors
+from common import Directions
+from food import Food
+from snake import Snake
+from spritesheet import SpriteSheet
 
 CELL_SIZE = 64
 
@@ -44,7 +45,7 @@ class SnakeSprite(pygame.sprite.Sprite):
 
         self.snake = snake
         self.SCALE = SCALE
-        SNAKE_SPRITESHEET.set_snake_color(snake.color, 5*CELL_SIZE, 4*CELL_SIZE)
+        SNAKE_SPRITESHEET.set_snake_color(snake.color, 5 * CELL_SIZE, 4 * CELL_SIZE)
 
         snake_map = {
             ("head", Directions.UP): (3, 0),
@@ -73,7 +74,7 @@ class SnakeSprite(pygame.sprite.Sprite):
         self.snake_images = {
             name: pygame.transform.scale(
                 SNAKE_SPRITESHEET.image_at(
-                    (a * CELL_SIZE, b * CELL_SIZE, CELL_SIZE, CELL_SIZE), -1
+                    (a * CELL_SIZE, b * CELL_SIZE, CELL_SIZE, CELL_SIZE), -1,
                 ),
                 (SCALE, SCALE),
             )
@@ -81,7 +82,7 @@ class SnakeSprite(pygame.sprite.Sprite):
         }
 
         self.image = pygame.Surface([WIDTH * SCALE, HEIGHT * SCALE])
-        self.image = colors.change_color(self.image, self.snake.color, WIDTH*SCALE, HEIGHT*SCALE)
+        self.image = colors.change_color(self.image, self.snake.color, WIDTH * SCALE, HEIGHT * SCALE)
         self.update()
         self.rect = self.image.get_rect()
 
@@ -92,7 +93,7 @@ class SnakeSprite(pygame.sprite.Sprite):
         # Render snake
 
         def get_direction(x, y, prev_x, prev_y):
-            """given 2 coordinates returns direction taken."""
+            """Given 2 coordinates returns direction taken."""
             dir = None
             if x - prev_x == 1:
                 dir = Directions.RIGHT
@@ -127,7 +128,7 @@ class SnakeSprite(pygame.sprite.Sprite):
 
             # blit previous body part now that we now directions taken
             self.image.blit(
-                self.snake_images[image], (self.SCALE * prev_x, self.SCALE * prev_y)
+                self.snake_images[image], (self.SCALE * prev_x, self.SCALE * prev_y),
             )
 
             prev_x, prev_y = x, y
@@ -135,6 +136,6 @@ class SnakeSprite(pygame.sprite.Sprite):
 
         # Finally blit tail
         self.image.blit(
-            self.snake_images[("tail", prev_dir)],
+            self.snake_images["tail", prev_dir],
             (self.SCALE * prev_x, self.SCALE * prev_y),
         )

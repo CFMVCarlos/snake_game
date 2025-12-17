@@ -1,18 +1,18 @@
 import pygame
-from snake import Snake
-from food import Food, Spawner
+
 import colors
 import inputhandler
-
-from sprites import SnakeSprite, FoodSprite
 from common import Directions
+from food import Food, Spawner
+from snake import Snake
+from sprites import FoodSprite, SnakeSprite
 
 
 def main(WIDTH, HEIGHT, SCALE):
     pygame.init()
     pygame.mixer.init()
 
-    display = pygame.display.set_mode((SCALE * WIDTH, SCALE * (HEIGHT+1)))
+    display = pygame.display.set_mode((SCALE * WIDTH, SCALE * (HEIGHT + 1)))
     clock = pygame.time.Clock()
 
     INITIAL_SNAKE_SIZE = 3
@@ -38,7 +38,7 @@ def main(WIDTH, HEIGHT, SCALE):
     pygame.mixer.music.play(loops=-1)
 
     bg = pygame.image.load("background.png")
-    bg = pygame.transform.scale(bg, (WIDTH*SCALE, HEIGHT*SCALE))
+    bg = pygame.transform.scale(bg, (WIDTH * SCALE, HEIGHT * SCALE))
     # bg = colors.change_color(bg, colors.RED, WIDTH*SCALE, HEIGHT*SCALE)
 
     key_pressed = inputhandler.InputHandler()
@@ -81,9 +81,9 @@ def main(WIDTH, HEIGHT, SCALE):
         all_sprites.update()
         all_sprites.draw(display)
 
-        pygame.draw.rect(display, colors.GRAY, pygame.Rect(0, SCALE*HEIGHT, SCALE*WIDTH, SCALE))
+        pygame.draw.rect(display, colors.GRAY, pygame.Rect(0, SCALE * HEIGHT, SCALE * WIDTH, SCALE))
         for pos, snake in enumerate(snakes):
-            display.blit(score1.render("Snake" + str(pos) + ": " + str(snake.get_score()), True, colors.GREEN), (pos*150, SCALE*HEIGHT))
+            display.blit(score1.render("Snake" + str(pos) + ": " + str(snake.get_score()), True, colors.GREEN), (pos * 150, SCALE * HEIGHT))
 
         pygame.display.flip()
         clock.tick(15)

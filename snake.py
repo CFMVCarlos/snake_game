@@ -1,10 +1,10 @@
-from common import Directions, Controls
-from scoreboard import Scoreboard
-from pygame import K_UP, K_DOWN, K_LEFT, K_RIGHT, K_w, K_s, K_a, K_d
 import logging
 
+from common import Controls, Directions
+from scoreboard import Scoreboard
 
-class Snake():
+
+class Snake:
     def __init__(self, body=[], controls=1, color=None):
         self.snake_body = body  # List of coordinates of snake's body
         self.direction = Directions.RIGHT
@@ -17,7 +17,6 @@ class Snake():
 
     def move(self, direction: Directions = None):
         """Add one piece, pop one out."""
-
         if direction:
             self.direction = direction
 
@@ -56,17 +55,17 @@ class Snake():
             self.wall_interaction(pos, snake_part, width, height)
 
     def wall_interaction(self, pos, snake_part, width, height):
-        if snake_part[0] > width-1:
+        if snake_part[0] > width - 1:
             self.snake_body[pos] = (0, snake_part[1])
 
         elif snake_part[0] < 0:
-            self.snake_body[pos] = (width-1, snake_part[1])
+            self.snake_body[pos] = (width - 1, snake_part[1])
 
-        elif snake_part[1] > height-1:
+        elif snake_part[1] > height - 1:
             self.snake_body[pos] = (snake_part[0], 0)
 
         elif snake_part[1] < 0:
-            self.snake_body[pos] = (snake_part[0], height-1)
+            self.snake_body[pos] = (snake_part[0], height - 1)
 
     def confirm_key_input(self, key):
         return (self.controls == 1 and key in Controls.KEYS) or \

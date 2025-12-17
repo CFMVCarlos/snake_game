@@ -1,5 +1,6 @@
 from enum import Enum
-from pygame import K_UP, K_DOWN, K_LEFT, K_RIGHT, K_w, K_s, K_a, K_d
+
+from pygame import K_DOWN, K_LEFT, K_RIGHT, K_UP, K_a, K_d, K_s, K_w
 
 
 class Directions(Enum):
@@ -9,6 +10,6 @@ class Directions(Enum):
     RIGHT = (1, 0)
 
 
-class Controls():
+class Controls:
     KEYS = [K_UP, K_DOWN, K_LEFT, K_RIGHT]
     WASD = [K_w, K_s, K_a, K_d]

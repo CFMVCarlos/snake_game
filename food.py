@@ -1,7 +1,7 @@
 import random
 
 
-class Food():
+class Food:
     def __init__(self, start_width=0, stop_width=0, start_height=0, stop_height=0):
         self.start_width = start_width
         self.stop_width = stop_width

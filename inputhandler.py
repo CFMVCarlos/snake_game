@@ -1,8 +1,9 @@
 import pygame
+
 from common import Directions
 
 
-class InputHandler():
+class InputHandler:
     def __init__(self):
         self.command = {
             pygame.K_w: Directions.UP,
@@ -12,7 +13,7 @@ class InputHandler():
             pygame.K_UP: Directions.UP,
             pygame.K_DOWN: Directions.DOWN,
             pygame.K_LEFT: Directions.LEFT,
-            pygame.K_RIGHT: Directions.RIGHT
+            pygame.K_RIGHT: Directions.RIGHT,
         }
 
     def handleInput(self, key):
