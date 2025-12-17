@@ -1,0 +1,39 @@
+# ignore app cache folder
+.cache/
+
+# ignore virtual environments
+venv/
+env/
+*.venv/
+
+# ignore Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ignore distribution/build folders
+build/
+dist/
+*.egg-info/
+
+# ignore IDE/editor specific files
+.vscode/
+.idea/
+*.swp
+
+# ignore test coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.nox/
+.pytest_cache/
+
+# ignore mypy cache
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ignore ruff cache
+.ruff_cache/
+
+
